@@ -109,7 +109,6 @@ Citizen.CreateThread(function()
 				
 		elseif (GetLastInputMethod(2) and IsControlJustPressed(1, 38) and IsControlPressed(1, 21)) and not IsPedInAnyVehicle(playerPed, true) and sitting then
 					ClearPedTasks(playerPed)
-					FreezeEntityPosition(currentSitObj, false)
 					TriggerServerEvent('esx_interact:leavePlace', currentSitObj)
 					sitting = false
 					Citizen.Wait(4000) -- This gives the SHIFT+E command time to "cool down" so it doesn't reseat the player
@@ -135,7 +134,6 @@ function sit(object, modelName, data)
 			currentSitObj = id
 
 			TriggerServerEvent('esx_interact:takePlace', id)
-			FreezeEntityPosition(object, true)
 
 			currentScenario = data.scenario
 
